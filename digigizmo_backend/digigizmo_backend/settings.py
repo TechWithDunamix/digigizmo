@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-jh!%a%c1d1bvh_+!c3@c+*521)08a=_r0sx(0f!9i1eb&16z@p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,12 +78,26 @@ WSGI_APPLICATION = 'digigizmo_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'defaultdb',  # Your database name
+        'USER': 'avnadmin',   # Your database user
+        'PASSWORD': 'AVNS_JNVwVW8Tz_q7YC1vXSh',  # Your database password
+        'HOST': 'pg-32f6797c-digigizmo4-1a36.g.aivencloud.com',  # Your database host
+        'PORT': '15947',  # Your database port
+        'OPTIONS': {
+            'sslmode': 'require',  # This enables SSL mode
+        }
     }
 }
+
 
 
 # Password validation
@@ -131,3 +145,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'core.User'
 AUTHENTICATION_BACKENDS = ['core.functions.Auth','django.contrib.auth.backends.ModelBackend']
 CORS_ALLOW_ALL_ORIGINS = True
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    
+    "CLOUD_NAME" : 'dseahlmpb',
+    "API_KEY": '753657566698898',
+    "API_SECRET" : 'fy15uGZUOBkYxqu0rT4Fs7OwPRo'
+}

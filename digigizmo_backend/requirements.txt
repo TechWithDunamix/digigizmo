@@ -1,0 +1,10 @@
+django
+gunicorn
+django_cloudinary_storage
+cloudinary
+whitenoise
+psycopg2-binary == 2.9.6
+Pillow
+django-summernote
+django-cors-headers
+djangorestframework
