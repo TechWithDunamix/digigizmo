@@ -31,7 +31,7 @@ core_admin.register(Product)
 core_admin.register(Category)
 
 class CartAdmin(admin.ModelAdmin):
-	list_filter = ['ordered',]
+	list_filter = ['ordered','delivered']
 	list_display =['product','quantity']
 
 core_admin.register(CartItem,CartAdmin)

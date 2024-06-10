@@ -64,6 +64,7 @@ class CartItem(models.Model):
 	product = models.ForeignKey(Product,on_delete = models.CASCADE)
 	quantity = models.IntegerField(default = 1)
 	ordered = models.BooleanField(default = False)
+	delivered = models.BooleanField(default = False)
 	@property
 	def total_price(self):
 		return self.product.price * self.quantity

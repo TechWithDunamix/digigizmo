@@ -109,7 +109,9 @@ class CartView(GenericAPIView):
 
 	def post(self,request,product_id,*args,**kwargs):
 		product = get_object_or_404(Product,id = product_id)
-		cart_item = CartItem.objects.get_or_create(user = request.user,product = product)
+		cart_item,created = CartItem.objects.get_or_create(user = request.user,product = product)
+		if not created:
+			CartItem.objects.create(user = request.user,product = product)
 		response = {"detail":"success"}
 		return Response(response,status = status.HTTP_201_CREATED)
 
